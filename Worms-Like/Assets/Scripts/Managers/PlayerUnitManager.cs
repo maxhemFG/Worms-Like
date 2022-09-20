@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerUnitManager : MonoBehaviour
 {
-    public static PlayerUnitManager instance;
-
-    private static int currentPlayerCount = 2;
-    
+    private const int PLAYER1 = 1;
+    private const int PLAYER2 = 2;
+    public static PlayerUnitManager Instance;
+    private static int currentPlayerCount = 2;   
     [SerializeField] private List<PlayerUnit> playerOneUnits;
     private static int playerOneActive = 0;
     [SerializeField] private List<PlayerUnit> playerTwoUnits;
@@ -15,27 +15,41 @@ public class PlayerUnitManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
     void FixedUpdate()
     {
-
+      
         switch (TurnManager.GetCurrentPlayer())
         {
-            case 1:
+            case PLAYER1:
                 playerOneUnits[playerOneActive].UnitMove();
+
+                if (PlayerInputManager.JumpButtonPressed)
+                {
+                    playerOneUnits[playerOneActive].UnitJump();
+                    PlayerInputManager.JumpButtonPressed = false;
+                }
+
                 break;
 
-            case 2:
+            case PLAYER2:
                 playerTwoUnits[playerTwoActive].UnitMove();
+
+                if (PlayerInputManager.JumpButtonPressed)
+                {
+                    playerTwoUnits[playerTwoActive].UnitJump();
+                    PlayerInputManager.JumpButtonPressed = false;
+                }
+
                 break;
         }
         
@@ -53,7 +67,7 @@ public class PlayerUnitManager : MonoBehaviour
         {
             case 1:
 
-                if(playerOneActive < instance.playerOneUnits.Count-1)
+                if(playerOneActive < Instance.playerOneUnits.Count-1)
                 {
                     playerOneActive++;
                 }
@@ -66,7 +80,7 @@ public class PlayerUnitManager : MonoBehaviour
 
             case 2:
 
-                if (playerTwoActive < instance.playerTwoUnits.Count-1)
+                if (playerTwoActive < Instance.playerTwoUnits.Count-1)
                 {
                     playerTwoActive++;
                 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public static TurnManager instance;
+    public static TurnManager Instance;
 
     [Header("Turn Attributes")]
     [Tooltip("The duration of a turn in seconds.")]
@@ -20,13 +20,13 @@ public class TurnManager : MonoBehaviour
 
     void Awake()
     {
-        if(instance != null && instance != this)
+        if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
 
         alivePlayers = new List<int>();
@@ -84,6 +84,6 @@ public class TurnManager : MonoBehaviour
 
     public static bool InTransition()
     {
-        return instance.turnTransition;
+        return Instance.turnTransition;
     }
 }

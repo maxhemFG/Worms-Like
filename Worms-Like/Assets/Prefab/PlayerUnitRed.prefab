@@ -288,6 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1991151345492576459}
   - component: {fileID: 7394524116556550199}
+  - component: {fileID: 8300902197413598254}
   - component: {fileID: 1991151345393523477}
   - component: {fileID: 1991151345393523479}
   - component: {fileID: 1991151345393523478}
@@ -328,6 +329,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9104765c8a8eeec4c85c5222f25dca5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8300902197413598254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991151345492576452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c63d816c6016724184a7697533fc595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckOffset: 0
 --- !u!114 &1991151345393523477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca40117e3609474591b4b970c384363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitRigidBody: {fileID: 1991151345393523479}
   moveSpeed: 3
 --- !u!54 &1991151345393523479
 Rigidbody:

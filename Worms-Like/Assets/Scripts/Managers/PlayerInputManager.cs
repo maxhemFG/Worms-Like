@@ -5,19 +5,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
-    public static PlayerInputManager instance;
-
-    public static Vector2 movement;
+    public static PlayerInputManager Instance;
+    public static Vector2 MovementInput;
+    public static bool JumpButtonPressed;
 
     void Awake()
     {
-        if(instance != null && instance != this)
+        if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
@@ -25,13 +25,25 @@ public class PlayerInputManager : MonoBehaviour
     {
         if (!TurnManager.InTransition())
         {
-            movement = context.ReadValue<Vector2>();
+            MovementInput = context.ReadValue<Vector2>();
         }
         else
         {
-            movement = Vector2.zero;
+            MovementInput = Vector2.zero;
         }
         
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (!TurnManager.InTransition() && context.performed)
+        {
+            JumpButtonPressed = true;
+        }
+        else
+        {
+            JumpButtonPressed = false;
+        }
     }
 
 }
