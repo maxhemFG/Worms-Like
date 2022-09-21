@@ -23,6 +23,11 @@ public class PlayerUnit : MonoBehaviour
            
     }
 
+    public void UnitLook()
+    {
+        unitMovement.Look();
+    }
+
     public void UnitJump()
     {
 

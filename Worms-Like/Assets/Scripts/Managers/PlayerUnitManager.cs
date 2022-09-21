@@ -61,6 +61,22 @@ public class PlayerUnitManager : MonoBehaviour
         
     }
 
+    private void LateUpdate()
+    {
+
+        switch (TurnManager.GetCurrentPlayer())
+        {
+            case PLAYER1:
+                playerOneUnits[playerOneActive].UnitLook();
+                break;
+
+            case PLAYER2:
+                playerTwoUnits[playerTwoActive].UnitLook();
+                break;
+        }
+
+    }
+
     public static int GetPlayerCount()
     {
         return currentPlayerCount;

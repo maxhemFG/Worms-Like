@@ -28,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
         unitRigidBody.velocity = Vector3.ClampMagnitude(unitRigidBody.velocity, moveSpeed);       
     }
 
+    public void Look()
+    {
+       ///FIX ROTATION
+    }
+
     public void Jump()
     {
         //Debug.Log(gameObject.transform.name + "Jumping");

@@ -7,6 +7,7 @@ public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInputManager Instance;
     public static Vector2 MovementInput;
+    public static Vector2 LookInput;
     public static bool JumpButtonPressed;
 
     void Awake()
@@ -35,6 +36,18 @@ public class PlayerInputManager : MonoBehaviour
             MovementInput = Vector2.zero;
         }
         
+    }
+
+    public void Look(InputAction.CallbackContext context)
+    {
+        if (!TurnManager.InTransition())
+        {
+            LookInput = context.ReadValue<Vector2>();
+        }
+        else
+        {
+            LookInput = Vector2.zero;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
