@@ -15,7 +15,12 @@ public class PlayerUnit : MonoBehaviour
 
     public void UnitMove()
     {
-        unitMovement.Move();
+
+        if (unitState.IsGrounded())
+        {
+            unitMovement.Move();
+        }
+           
     }
 
     public void UnitJump()
@@ -27,7 +32,7 @@ public class PlayerUnit : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not grounded!");
+            //Debug.Log("Not grounded!");
         }
         
     }

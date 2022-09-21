@@ -10,6 +10,7 @@ public class TurnManager : MonoBehaviour
     [Tooltip("The duration of a turn in seconds.")]
     [SerializeField] private float turnDuration = 45f;
     private float timerTurnDuration = 0f;
+    [Tooltip("The delay between turns in seconds.")]
     [SerializeField] private float turnTransitionDelay = 1f;
     private float timerTurnTransition = 0f;
 
@@ -20,6 +21,7 @@ public class TurnManager : MonoBehaviour
 
     void Awake()
     {
+
         if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -34,6 +36,7 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+
         for(int i = 0; i < PlayerUnitManager.GetPlayerCount(); i++)
         {
             alivePlayers.Add(i + 1);
@@ -63,6 +66,7 @@ public class TurnManager : MonoBehaviour
 
     void ChangeTurn()
     {
+
         if(currentPlayer < alivePlayers.Count)
         {
             currentPlayer++;

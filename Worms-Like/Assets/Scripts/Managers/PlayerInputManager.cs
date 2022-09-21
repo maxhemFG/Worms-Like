@@ -11,6 +11,7 @@ public class PlayerInputManager : MonoBehaviour
 
     void Awake()
     {
+
         if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -19,10 +20,12 @@ public class PlayerInputManager : MonoBehaviour
         {
             Instance = this;
         }
+
     }
 
     public void Move(InputAction.CallbackContext context)
     {
+
         if (!TurnManager.InTransition())
         {
             MovementInput = context.ReadValue<Vector2>();
@@ -36,6 +39,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+
         if (!TurnManager.InTransition() && context.performed)
         {
             JumpButtonPressed = true;
@@ -44,6 +48,7 @@ public class PlayerInputManager : MonoBehaviour
         {
             JumpButtonPressed = false;
         }
+
     }
 
 }
