@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class CameraManager : MonoBehaviour
 
     [Header("Camera GameObjects")]
     [Tooltip("Fill this list with the focus camera on each player unit. WARNING: Make sure that the element order corresponds to the play order for the corresponding player.")]
-    [SerializeField] private List<Camera> focusCamPlayer1;
+    [SerializeField] private List<CinemachineVirtualCamera> focusCamPlayer1;
     [Tooltip("Fill this list with the focus camera on each player unit. WARNING: Make sure that the element order corresponds to the play order for the corresponding player.")]
-    [SerializeField] private List<Camera> focusCamPlayer2;
+    [SerializeField] private List<CinemachineVirtualCamera> focusCamPlayer2;
     private int previousUnit = 0;
     private bool cameraSwapped = true;
 
@@ -34,10 +35,12 @@ public class CameraManager : MonoBehaviour
         for(int i = 1; i < focusCamPlayer1.Count; i++)
         {
             focusCamPlayer1[i].enabled = false;
+            //focusCamPlayer1[i].Priority = 0;
         }
 
         for (int i = 0; i < focusCamPlayer2.Count; i++){
             focusCamPlayer2[i].enabled = false;
+            //focusCamPlayer2[i].Priority = 0;
         }
 
     }

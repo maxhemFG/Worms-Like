@@ -65,12 +65,12 @@ public class PlayerUnitManager : MonoBehaviour
 
     private void Update()
     {
-       
+     
     }
 
     private void LateUpdate()
     {
-        switch (TurnManager.GetCurrentPlayer())
+        /*switch (TurnManager.GetCurrentPlayer())
         {
             case PLAYER1:
                 playerOneUnits[playerOneActive].UnitLookRotation();
@@ -80,6 +80,7 @@ public class PlayerUnitManager : MonoBehaviour
                 playerTwoUnits[playerTwoActive].UnitLookRotation();
                 break;
         }
+        */
     }
 
     public static int GetPlayerCount()
