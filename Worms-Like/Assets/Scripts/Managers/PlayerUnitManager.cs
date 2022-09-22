@@ -38,6 +38,7 @@ public class PlayerUnitManager : MonoBehaviour
         {
             case PLAYER1:
                 playerOneUnits[playerOneActive].UnitMove();
+                playerOneUnits[playerOneActive].UnitLookRotation();
 
                 if (PlayerInputManager.JumpButtonPressed)
                 {
@@ -49,6 +50,7 @@ public class PlayerUnitManager : MonoBehaviour
 
             case PLAYER2:
                 playerTwoUnits[playerTwoActive].UnitMove();
+                playerTwoUnits[playerTwoActive].UnitLookRotation();
 
                 if (PlayerInputManager.JumpButtonPressed)
                 {
@@ -61,20 +63,23 @@ public class PlayerUnitManager : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+       
+    }
+
     private void LateUpdate()
     {
-
         switch (TurnManager.GetCurrentPlayer())
         {
             case PLAYER1:
-                playerOneUnits[playerOneActive].UnitLook();
+                playerOneUnits[playerOneActive].UnitLookRotation();
                 break;
 
             case PLAYER2:
-                playerTwoUnits[playerTwoActive].UnitLook();
+                playerTwoUnits[playerTwoActive].UnitLookRotation();
                 break;
         }
-
     }
 
     public static int GetPlayerCount()

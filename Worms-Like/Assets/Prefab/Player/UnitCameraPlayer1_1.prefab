@@ -123,5 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
-  smoothValue: 0.1
-  camOffset: {x: 1, y: 2, z: -3.5}
+  aimTarget: {fileID: 0}
+  smoothValue: 0.075
+  rotationSpeed: 90
+  camOffset: {x: 1, y: 2, z: -3}

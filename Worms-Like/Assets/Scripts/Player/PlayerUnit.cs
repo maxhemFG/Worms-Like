@@ -23,9 +23,9 @@ public class PlayerUnit : MonoBehaviour
            
     }
 
-    public void UnitLook()
+    public void UnitLookRotation()
     {
-        unitMovement.Look();
+        unitMovement.LookRotation();
     }
 
     public void UnitJump()

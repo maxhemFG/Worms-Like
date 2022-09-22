@@ -22,6 +22,8 @@ public class PlayerInputManager : MonoBehaviour
             Instance = this;
         }
 
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     public void Move(InputAction.CallbackContext context)

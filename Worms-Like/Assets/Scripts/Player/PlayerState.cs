@@ -30,6 +30,12 @@ public class PlayerState : MonoBehaviour
     {
         CheckGrounded();
         ApplyGravity();
+
+        if (PlayerInputManager.LookInput.normalized == Vector2.zero)
+        {
+            unitRigidbody.angularVelocity = Vector3.zero;
+        }
+
     }
 
     void CheckGrounded()
