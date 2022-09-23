@@ -9,6 +9,10 @@ public class PlayerInputManager : MonoBehaviour
     public static Vector2 MovementInput;
     public static Vector2 LookInput;
     public static bool JumpButtonPressed;
+    public static bool FireButtonPressed;
+
+    [SerializeField] private float lookHorizontalSensitivity = 0f;
+    [SerializeField] private float lookVerticalSensitivity = 0f;
 
     void Awake()
     {
@@ -64,6 +68,28 @@ public class PlayerInputManager : MonoBehaviour
             JumpButtonPressed = false;
         }
 
+    }
+
+    public void Fire(InputAction.CallbackContext context)
+    {
+        if (!TurnManager.InTransition() && context.performed)
+        {
+            FireButtonPressed = true;
+        }
+        else
+        {
+            FireButtonPressed = false;
+        }
+    }
+
+    public float GetHorizontalSens()
+    {
+        return lookHorizontalSensitivity;
+    }
+
+    public float GetVerticalSens()
+    {
+        return lookVerticalSensitivity;
     }
 
 }

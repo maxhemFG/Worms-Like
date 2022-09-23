@@ -6,11 +6,13 @@ public class PlayerUnit : MonoBehaviour
 {
     private PlayerState unitState;
     private PlayerMovement unitMovement;
+    private PlayerWeapon unitBazooka;
 
     private void Start()
     {
         unitState = GetComponent<PlayerState>();
         unitMovement = GetComponent<PlayerMovement>();
+        unitBazooka = GetComponentInChildren<PlayerWeapon>();
     }
 
     public void UnitMove()
@@ -26,6 +28,16 @@ public class PlayerUnit : MonoBehaviour
     public void UnitLookRotation()
     {
         unitMovement.LookRotation();
+    }
+
+    public void UnitAimWeapon()
+    {
+        unitBazooka.AimWeapon();
+    }
+
+    public void UnitFireProjectile()
+    {
+        unitBazooka.FireProjectile(unitState.IsGrounded());
     }
 
     public void UnitJump()

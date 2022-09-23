@@ -39,6 +39,7 @@ public class PlayerUnitManager : MonoBehaviour
             case PLAYER1:
                 playerOneUnits[playerOneActive].UnitMove();
                 playerOneUnits[playerOneActive].UnitLookRotation();
+                playerOneUnits[playerOneActive].UnitAimWeapon();
 
                 if (PlayerInputManager.JumpButtonPressed)
                 {
@@ -46,16 +47,29 @@ public class PlayerUnitManager : MonoBehaviour
                     PlayerInputManager.JumpButtonPressed = false;
                 }
 
+                if (PlayerInputManager.FireButtonPressed)
+                {
+                    playerOneUnits[playerOneActive].UnitFireProjectile();
+                    PlayerInputManager.FireButtonPressed = false;
+                }
+
                 break;
 
             case PLAYER2:
                 playerTwoUnits[playerTwoActive].UnitMove();
                 playerTwoUnits[playerTwoActive].UnitLookRotation();
+                playerTwoUnits[playerTwoActive].UnitAimWeapon();
 
                 if (PlayerInputManager.JumpButtonPressed)
                 {
                     playerTwoUnits[playerTwoActive].UnitJump();
                     PlayerInputManager.JumpButtonPressed = false;
+                }
+
+                if (PlayerInputManager.FireButtonPressed)
+                {
+                    playerTwoUnits[playerTwoActive].UnitFireProjectile();
+                    PlayerInputManager.FireButtonPressed = false;
                 }
 
                 break;
@@ -65,7 +79,7 @@ public class PlayerUnitManager : MonoBehaviour
 
     private void Update()
     {
-     
+        
     }
 
     private void LateUpdate()

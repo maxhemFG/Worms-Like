@@ -35,12 +35,10 @@ public class CameraManager : MonoBehaviour
         for(int i = 1; i < focusCamPlayer1.Count; i++)
         {
             focusCamPlayer1[i].enabled = false;
-            //focusCamPlayer1[i].Priority = 0;
         }
 
         for (int i = 0; i < focusCamPlayer2.Count; i++){
             focusCamPlayer2[i].enabled = false;
-            //focusCamPlayer2[i].Priority = 0;
         }
 
     }

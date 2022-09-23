@@ -8,8 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Attributes")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float lookSensitivity = 0f;
-
+    
     Vector3 moveDirection = Vector3.zero;
     Vector3 moveForce = Vector3.zero;
 
@@ -31,12 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void LookRotation()
     {
-        ///FIX ROTATION
-        transform.Rotate(transform.up, PlayerInputManager.LookInput.normalized.x * lookSensitivity); //test this in update and rotate camera in lateupdate!!!!
-
-        //Vector3 rotateVelocity = new Vector3(0, PlayerInputManager.LookInput.normalized.x * lookSensitivity, 0);
-        //Quaternion deltaRotation = Quaternion.Euler(rotateVelocity * Time.fixedDeltaTime);
-        //unitRigidBody.MoveRotation(unitRigidBody.rotation * deltaRotation);
+        transform.Rotate(transform.up, PlayerInputManager.LookInput.normalized.x * PlayerInputManager.Instance.GetHorizontalSens()); //test this in update and rotate camera in lateupdate!!!!
     }
 
     public void Jump()
