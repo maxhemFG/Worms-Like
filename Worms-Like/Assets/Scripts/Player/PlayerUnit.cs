@@ -7,6 +7,7 @@ public class PlayerUnit : MonoBehaviour
     private PlayerState unitState;
     private PlayerMovement unitMovement;
     private PlayerWeapon unitBazooka;
+    private int unitID = 0; //Set in UnitManger on start. Make SetID method from PlayerUnit.
 
     private void Start()
     {

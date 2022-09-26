@@ -117,6 +117,13 @@ public class PlayerUnitManager : MonoBehaviour
         }
     }
 
+    public void UnitDeath(int unitID)
+    {
+        //maybe set unit ID on awake in unitManager? loop through the thing and set one.
+        ////find correct unit  -> remove from List
+        //Call unit Destroy 
+    }
+
     public static void NewTurn()
     {
 
