@@ -31,6 +31,20 @@ public class PlayerUnitManager : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        for(int i = 0; i < playerOneUnits.Count; i++)
+        {
+            playerOneUnits[i].SetID(i);
+        }
+
+        for(int i = 0; i < playerTwoUnits.Count; i++)
+        {           
+            playerTwoUnits[i].SetID(playerOneUnits.Count + i);
+        }
+
+    }
+
     void FixedUpdate()
     {      
 
@@ -120,8 +134,8 @@ public class PlayerUnitManager : MonoBehaviour
     public void UnitDeath(int unitID)
     {
         //maybe set unit ID on awake in unitManager? loop through the thing and set one.
-        ////find correct unit  -> remove from List
-        //Call unit Destroy 
+        ////find correct unit  -> remove from List -> GetID in for loop. Tell Game Manager we removed 1 unit from Team X
+        //Call unit Destroy
     }
 
     public static void NewTurn()

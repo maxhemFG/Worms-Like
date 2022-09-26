@@ -16,6 +16,16 @@ public class PlayerUnit : MonoBehaviour
         unitBazooka = GetComponentInChildren<PlayerWeapon>();
     }
 
+    public void SetID(int id)
+    {
+        unitID = id;
+    }
+
+    public int GetID()
+    {
+        return unitID;
+    }
+
     public void UnitMove()
     {
 
