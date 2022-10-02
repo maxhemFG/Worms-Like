@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnDeath()
     {
-        ///Tell Unit Manager that I am dead
+        PlayerUnitManager.UnitDeath(unit.GetID());
     }
 
 

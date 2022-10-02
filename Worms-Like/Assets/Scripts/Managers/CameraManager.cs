@@ -6,6 +6,8 @@ using Cinemachine;
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance;
+    private const int PLAYER1 = 1;
+    private const int PLAYER2 = 2;
 
     [Header("Camera GameObjects")]
     [Tooltip("Fill this list with the focus camera on each player unit. WARNING: Make sure that the element order corresponds to the play order for the corresponding player.")]
@@ -70,6 +72,22 @@ public class CameraManager : MonoBehaviour
             case 2:
                 focusCamPlayer2[PlayerUnitManager.GetActiveUnit()].enabled = true;
                 focusCamPlayer1[previousUnit].enabled = false;
+                break;
+        }
+
+    }
+
+    public static void RemoveCamera(int player, int index)
+    {
+
+        switch (player)
+        {
+            case PLAYER1:
+                Instance.focusCamPlayer1.RemoveAt(index);
+                break;
+
+            case PLAYER2:
+                Instance.focusCamPlayer2.RemoveAt(index);
                 break;
         }
 

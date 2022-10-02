@@ -46,69 +46,53 @@ public class PlayerUnitManager : MonoBehaviour
     }
 
     void FixedUpdate()
-    {      
-
-        switch (TurnManager.GetCurrentPlayer())
-        {
-            case PLAYER1:
-                playerOneUnits[playerOneActive].UnitMove();
-                playerOneUnits[playerOneActive].UnitLookRotation();
-                playerOneUnits[playerOneActive].UnitAimWeapon();
-
-                if (PlayerInputManager.JumpButtonPressed)
-                {
-                    playerOneUnits[playerOneActive].UnitJump();
-                    PlayerInputManager.JumpButtonPressed = false;
-                }
-
-                if (PlayerInputManager.FireButtonPressed)
-                {
-                    playerOneUnits[playerOneActive].UnitFireProjectile();
-                    PlayerInputManager.FireButtonPressed = false;
-                }
-
-                break;
-
-            case PLAYER2:
-                playerTwoUnits[playerTwoActive].UnitMove();
-                playerTwoUnits[playerTwoActive].UnitLookRotation();
-                playerTwoUnits[playerTwoActive].UnitAimWeapon();
-
-                if (PlayerInputManager.JumpButtonPressed)
-                {
-                    playerTwoUnits[playerTwoActive].UnitJump();
-                    PlayerInputManager.JumpButtonPressed = false;
-                }
-
-                if (PlayerInputManager.FireButtonPressed)
-                {
-                    playerTwoUnits[playerTwoActive].UnitFireProjectile();
-                    PlayerInputManager.FireButtonPressed = false;
-                }
-
-                break;
-        }
-        
-    }
-
-    private void Update()
     {
-        
-    }
-
-    private void LateUpdate()
-    {
-        /*switch (TurnManager.GetCurrentPlayer())
+        if (GameManager.RoundActive())
         {
-            case PLAYER1:
-                playerOneUnits[playerOneActive].UnitLookRotation();
-                break;
 
-            case PLAYER2:
-                playerTwoUnits[playerTwoActive].UnitLookRotation();
-                break;
+            switch (TurnManager.GetCurrentPlayer())
+            {
+                case PLAYER1:
+                    playerOneUnits[playerOneActive].UnitMove();
+                    playerOneUnits[playerOneActive].UnitLookRotation();
+                    playerOneUnits[playerOneActive].UnitAimWeapon();
+
+                    if (PlayerInputManager.JumpButtonPressed)
+                    {
+                        playerOneUnits[playerOneActive].UnitJump();
+                        PlayerInputManager.JumpButtonPressed = false;
+                    }
+
+                    if (PlayerInputManager.FireButtonPressed)
+                    {
+                        playerOneUnits[playerOneActive].UnitFireProjectile();
+                        PlayerInputManager.FireButtonPressed = false;
+                    }
+
+                    break;
+
+                case PLAYER2:
+                    playerTwoUnits[playerTwoActive].UnitMove();
+                    playerTwoUnits[playerTwoActive].UnitLookRotation();
+                    playerTwoUnits[playerTwoActive].UnitAimWeapon();
+
+                    if (PlayerInputManager.JumpButtonPressed)
+                    {
+                        playerTwoUnits[playerTwoActive].UnitJump();
+                        PlayerInputManager.JumpButtonPressed = false;
+                    }
+
+                    if (PlayerInputManager.FireButtonPressed)
+                    {
+                        playerTwoUnits[playerTwoActive].UnitFireProjectile();
+                        PlayerInputManager.FireButtonPressed = false;
+                    }
+
+                    break;
+            }
+
         }
-        */
+             
     }
 
     public static int GetPlayerCount()
@@ -118,6 +102,7 @@ public class PlayerUnitManager : MonoBehaviour
 
     public static int GetActiveUnit()
     {
+
         switch (TurnManager.GetCurrentPlayer())
         {
             case PLAYER1:
@@ -129,14 +114,54 @@ public class PlayerUnitManager : MonoBehaviour
             default:
                 return 0;
         }
+
     }
 
-    public void UnitDeath(int unitID)
+    public static int GetUnitCount(int player)
     {
-        //maybe set unit ID on awake in unitManager? loop through the thing and set one.
-        ////find correct unit  -> remove from List -> GetID in for loop. Tell Game Manager we removed 1 unit from Team X
-        //Call unit Destroy
+
+        if (player == PLAYER1)
+        {
+            return Instance.playerOneUnits.Count;
+        }
+        else if( player == PLAYER2)
+        {
+            return Instance.playerTwoUnits.Count;
+        }
+
+        return 0; 
     }
+
+    public static void UnitDeath(int unitID)
+    {
+
+        for(int i = 0; i < Instance.playerOneUnits.Count; i++)
+        {
+
+            if(Instance.playerOneUnits[i].GetID() == unitID)
+            {
+                Instance.playerOneUnits[i].UnitDeath();
+                Instance.playerOneUnits.RemoveAt(i);
+                CameraManager.RemoveCamera(PLAYER1, i);
+            }
+
+        }
+
+        for(int i = 0; i < Instance.playerTwoUnits.Count; i++)
+        {
+
+            if(Instance.playerTwoUnits[i].GetID() == unitID)
+            {
+                Instance.playerTwoUnits[i].UnitDeath();
+                Instance.playerTwoUnits.RemoveAt(i);
+                CameraManager.RemoveCamera(PLAYER2, i);
+            }
+
+        }
+
+        GameManager.UpdateUnitCount();
+    }
+
 
     public static void NewTurn()
     {

@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9104765c8a8eeec4c85c5222f25dca5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCamera: {fileID: 0}
 --- !u!114 &5872087666203420207
 MonoBehaviour:
   m_ObjectHideFlags: 0

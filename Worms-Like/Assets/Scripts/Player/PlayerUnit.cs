@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerUnit : MonoBehaviour
 {
@@ -63,6 +64,12 @@ public class PlayerUnit : MonoBehaviour
             //Debug.Log("Not grounded!");
         }
         
+    }
+
+    public void UnitDeath()
+    {
+        Debug.Log("DESTROYED " + unitID);
+        Destroy(gameObject);
     }
 
 }

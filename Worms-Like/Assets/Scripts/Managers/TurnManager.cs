@@ -46,22 +46,25 @@ public class TurnManager : MonoBehaviour
 
     void Update()
     {
-        timerTurnDuration += Time.deltaTime;
 
-        if(timerTurnDuration >= turnDuration)
+        if (GameManager.RoundActive())
         {
-            turnTransition = true;
-            timerTurnTransition += Time.deltaTime;
+            timerTurnDuration += Time.deltaTime;
 
-            if(timerTurnTransition >= turnTransitionDelay)
+            if (timerTurnDuration >= turnDuration)
             {
-                ChangeTurn();
-                timerTurnDuration = 0f;
-                timerTurnTransition = 0f;
-            }
-            
-        } //else if(playerUnitManger.GetActiveUnit.isDead) ChangeTurn()
+                turnTransition = true;
+                timerTurnTransition += Time.deltaTime;
 
+                if (timerTurnTransition >= turnTransitionDelay)
+                {
+                    ChangeTurn();
+                }
+
+            }
+           
+        }
+      
     }
 
     void ChangeTurn()
@@ -78,7 +81,8 @@ public class TurnManager : MonoBehaviour
 
         PlayerUnitManager.NewTurn();
         turnTransition = false;
-        //Debug.Log("Current Player Turn: " + currentPlayer);
+        timerTurnDuration = 0f;
+        timerTurnTransition = 0f;
     }
 
     public static int GetCurrentPlayer()
@@ -90,4 +94,5 @@ public class TurnManager : MonoBehaviour
     {
         return Instance.turnTransition;
     }
+
 }
