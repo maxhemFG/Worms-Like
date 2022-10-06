@@ -14,7 +14,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private float turnTransitionDelay = 1f;
     private float timerTurnTransition = 0f;
 
-    private static int currentPlayer = 1;
+    private int currentPlayer = 1;
     private List<int> alivePlayers;
 
     private bool turnTransition = false;
@@ -87,7 +87,7 @@ public class TurnManager : MonoBehaviour
 
     public static int GetCurrentPlayer()
     {
-        return currentPlayer;
+        return Instance.currentPlayer;
     }
 
     public static bool InTransition()

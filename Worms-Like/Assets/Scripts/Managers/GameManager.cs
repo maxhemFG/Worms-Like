@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,7 +32,23 @@ public class GameManager : MonoBehaviour
         UpdateUnitCount();
     }
 
-   // Set Game Over. Other player wins.
+    private void Update()
+    {
+        if (gameOver)
+        {
+            Cursor.lockState = CursorLockMode.None;
+
+            if (victoriousPlayer == PLAYER1)
+            {
+                SceneManager.LoadScene("WinSceneP1");
+            }
+            else if (victoriousPlayer == PLAYER2)
+            {
+                SceneManager.LoadScene("WinSceneP2");
+            }
+        }
+        
+    }
 
     public static void UpdateUnitCount()
     {

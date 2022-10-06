@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6c4f86978ded64fb267c75e6c7b5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnDuration: 5
+  turnDuration: 25
   turnTransitionDelay: 2
 --- !u!1001 &743077561
 PrefabInstance:
